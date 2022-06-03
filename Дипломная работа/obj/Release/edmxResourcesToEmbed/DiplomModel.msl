@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище diplomModelContainer" CdmEntityContainer="diplomEntities1">
+    <EntitySetMapping Name="autopark">
+      <EntityTypeMapping TypeName="diplomModel.autopark">
+        <MappingFragment StoreEntitySet="autopark">
+          <ScalarProperty Name="Code_auto" ColumnName="Code_auto" />
+          <ScalarProperty Name="Number_car" ColumnName="Number_car" />
+          <ScalarProperty Name="Mark" ColumnName="Mark" />
+          <ScalarProperty Name="Gruz" ColumnName="Gruz" />
+          <ScalarProperty Name="Massa" ColumnName="Massa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="client">
+      <EntityTypeMapping TypeName="diplomModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="Code_client" ColumnName="Code_client" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="diplomModel.orders">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="Code_order" ColumnName="Code_order" />
+          <ScalarProperty Name="Code_client" ColumnName="Code_client" />
+          <ScalarProperty Name="Code_worker" ColumnName="Code_worker" />
+          <ScalarProperty Name="Type_gruz" ColumnName="Type_gruz" />
+          <ScalarProperty Name="Razmer_gruz" ColumnName="Razmer_gruz" />
+          <ScalarProperty Name="Ves_gruz" ColumnName="Ves_gruz" />
+          <ScalarProperty Name="Date_sdachi" ColumnName="Date_sdachi" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="diplomModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transport">
+      <EntityTypeMapping TypeName="diplomModel.transport">
+        <MappingFragment StoreEntitySet="transport">
+          <ScalarProperty Name="Code_transport" ColumnName="Code_transport" />
+          <ScalarProperty Name="Code_order" ColumnName="Code_order" />
+          <ScalarProperty Name="Code_auto" ColumnName="Code_auto" />
+          <ScalarProperty Name="Code_voditel" ColumnName="Code_voditel" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Date_otpr" ColumnName="Date_otpr" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="diplomModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="CodeVost" ColumnName="CodeVost" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Code_worker" ColumnName="Code_worker" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="voditel">
+      <EntityTypeMapping TypeName="diplomModel.voditel">
+        <MappingFragment StoreEntitySet="voditel">
+          <ScalarProperty Name="Code_voditel" ColumnName="Code_voditel" />
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="worker">
+      <EntityTypeMapping TypeName="diplomModel.worker">
+        <MappingFragment StoreEntitySet="worker">
+          <ScalarProperty Name="Code_worker" ColumnName="Code_worker" />
+          <ScalarProperty Name="FIO_worker" ColumnName="FIO_worker" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="role">
+      <EntityTypeMapping TypeName="diplomModel.role">
+        <MappingFragment StoreEntitySet="role">
+          <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

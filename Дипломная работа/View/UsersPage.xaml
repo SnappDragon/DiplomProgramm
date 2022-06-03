@@ -1,0 +1,116 @@
+﻿<Page x:Class="Дипломная_работа.View.UsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Дипломная_работа.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="570" d:DesignWidth="950"
+      Title="UsersPage" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid>
+
+        
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="470"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            
+            <Label Content="Поиск :"
+                   BorderBrush="White"
+                   Foreground="White"
+                   FontSize="18"/>
+            
+            <TextBox Width="250"
+                 Height="25"
+                 HorizontalAlignment="Left"
+                     x:Name="TxtFilter">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </TextBox.Resources>
+          </TextBox>
+
+            <Button Width="100"
+                    Height="25"
+                    Content="Поиск"
+                    Name="BtnFilterUser"
+                    Click="BtnFilterUser_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+        </StackPanel>
+
+        <DataGrid x:Name="DGridUsers" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True"
+                  Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код пользователя"
+                                    Binding="{Binding Code}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Логин"
+                                    Binding="{Binding Login}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Пароль"
+                                    Binding="{Binding Password}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Код работника"
+                                    Binding="{Binding Code_worker}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Роль"
+                                    Binding="{Binding Role}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Email"
+                                    Binding="{Binding Email}"
+                                    Width="*"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать"
+                                    Name="BtnEdit"
+                                    Click="BtnEdit_Click"
+                                    Width="150"
+                                    Height="25"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="2"
+                Content="Добавить"
+                Width="200"
+                Height="30"
+                HorizontalAlignment="Left"
+                Margin="5"
+                Name="BtnAd"
+                Click="BtnAd_Click"
+                FontFamily="Arial"
+                FontSize="16" 
+                FontWeight="Bold"/>
+        <Button Grid.Row="2"
+                Content="Удалить"
+                Width="200"
+                Height="30"
+                HorizontalAlignment="Right"
+                Margin="5"
+                Name="BtnDel"
+                Click="BtnDel_Click"
+                FontFamily="Arial"
+                FontSize="16" 
+                FontWeight="Bold"/>
+
+    </Grid>
+</Page>

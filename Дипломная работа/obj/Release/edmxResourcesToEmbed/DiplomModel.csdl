@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="diplomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="autopark">
+    <Key>
+      <PropertyRef Name="Code_auto" />
+    </Key>
+    <Property Name="Code_auto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number_car" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Mark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Gruz" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Massa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="transport" Relationship="Self.FK_transport_autopark" FromRole="autopark" ToRole="transport" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="Code_client" />
+    </Key>
+    <Property Name="Code_client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_orders_client" FromRole="client" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="Code_order" />
+    </Key>
+    <Property Name="Code_order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code_client" Type="Int32" Nullable="false" />
+    <Property Name="Code_worker" Type="Int32" Nullable="false" />
+    <Property Name="Type_gruz" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Razmer_gruz" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Ves_gruz" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Date_sdachi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="client" Relationship="Self.FK_orders_client" FromRole="orders" ToRole="client" />
+    <NavigationProperty Name="worker" Relationship="Self.FK_orders_worker" FromRole="orders" ToRole="worker" />
+    <NavigationProperty Name="transport" Relationship="Self.FK_transport_orders" FromRole="orders" ToRole="transport" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="transport">
+    <Key>
+      <PropertyRef Name="Code_transport" />
+    </Key>
+    <Property Name="Code_transport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code_order" Type="Int32" Nullable="false" />
+    <Property Name="Code_auto" Type="Int32" Nullable="false" />
+    <Property Name="Code_voditel" Type="Int32" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Date_otpr" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Count" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="autopark" Relationship="Self.FK_transport_autopark" FromRole="transport" ToRole="autopark" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_transport_orders" FromRole="transport" ToRole="orders" />
+    <NavigationProperty Name="voditel" Relationship="Self.FK_transport_voditel" FromRole="transport" ToRole="voditel" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Code_worker" Type="Int32" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="worker" Relationship="Self.FK_users_worker1" FromRole="users" ToRole="worker" />
+    <Property Name="CodeVost" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="voditel">
+    <Key>
+      <PropertyRef Name="Code_voditel" />
+    </Key>
+    <Property Name="Code_voditel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="transport" Relationship="Self.FK_transport_voditel" FromRole="voditel" ToRole="transport" />
+  </EntityType>
+  <EntityType Name="worker">
+    <Key>
+      <PropertyRef Name="Code_worker" />
+    </Key>
+    <Property Name="Code_worker" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIO_worker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Position" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_orders_worker" FromRole="worker" ToRole="orders" />
+    <NavigationProperty Name="users" Relationship="Self.FK_users_worker1" FromRole="worker" ToRole="users" />
+  </EntityType>
+  <Association Name="FK_transport_autopark">
+    <End Role="autopark" Type="Self.autopark" Multiplicity="1" />
+    <End Role="transport" Type="Self.transport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="autopark">
+        <PropertyRef Name="Code_auto" />
+      </Principal>
+      <Dependent Role="transport">
+        <PropertyRef Name="Code_auto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_client">
+    <End Role="client" Type="Self.client" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="Code_client" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="Code_client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_worker">
+    <End Role="worker" Type="Self.worker" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="worker">
+        <PropertyRef Name="Code_worker" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="Code_worker" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transport_orders">
+    <End Role="orders" Type="Self.orders" Multiplicity="1" />
+    <End Role="transport" Type="Self.transport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="Code_order" />
+      </Principal>
+      <Dependent Role="transport">
+        <PropertyRef Name="Code_order" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transport_voditel">
+    <End Role="voditel" Type="Self.voditel" Multiplicity="1" />
+    <End Role="transport" Type="Self.transport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="voditel">
+        <PropertyRef Name="Code_voditel" />
+      </Principal>
+      <Dependent Role="transport">
+        <PropertyRef Name="Code_voditel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_worker1">
+    <End Role="worker" Type="Self.worker" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="worker">
+        <PropertyRef Name="Code_worker" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="Code_worker" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="diplomEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="autopark" EntityType="Self.autopark" />
+    <EntitySet Name="client" EntityType="Self.client" />
+    <EntitySet Name="orders" EntityType="Self.orders" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="transport" EntityType="Self.transport" />
+    <EntitySet Name="users" EntityType="Self.users" />
+    <EntitySet Name="voditel" EntityType="Self.voditel" />
+    <EntitySet Name="worker" EntityType="Self.worker" />
+    <AssociationSet Name="FK_transport_autopark" Association="Self.FK_transport_autopark">
+      <End Role="autopark" EntitySet="autopark" />
+      <End Role="transport" EntitySet="transport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_client" Association="Self.FK_orders_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_worker" Association="Self.FK_orders_worker">
+      <End Role="worker" EntitySet="worker" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transport_orders" Association="Self.FK_transport_orders">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="transport" EntitySet="transport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transport_voditel" Association="Self.FK_transport_voditel">
+      <End Role="voditel" EntitySet="voditel" />
+      <End Role="transport" EntitySet="transport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_worker1" Association="Self.FK_users_worker1">
+      <End Role="worker" EntitySet="worker" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <EntitySet Name="role" EntityType="diplomModel.role" />
+  </EntityContainer>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

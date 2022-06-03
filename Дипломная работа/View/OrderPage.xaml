@@ -1,0 +1,81 @@
+﻿<Page x:Class="Дипломная_работа.View.OrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Дипломная_работа.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="570" d:DesignWidth="950"
+      Title="OrderPage" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="470"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="DGridOrders">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код заказа"
+                                    Binding="{Binding Code_order}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Код клиента"
+                                    Binding="{Binding Code_client}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Код работника"
+                                    Binding="{Binding Code_worker}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Тип груза"
+                                    Binding="{Binding Type_gruz}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Размер груза(ВхДхШ в метрах)"
+                                    Binding="{Binding Razmer_gruz}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Вес груза(в кг)"
+                                    Binding="{Binding Ves_gruz}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Дата сдачи"
+                                    Binding="{Binding Date_sdachi}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Город"
+                                    Binding="{Binding City}"
+                                    Width="*"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать"
+                                    Width="150"
+                                    Height="25"
+                                    Name="BtnEditOrder"
+                                    Click="BtnEditOrder_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Добавить"
+                Width="200"
+                Height="30"
+                HorizontalAlignment="Left"
+                Margin="5"
+                Grid.Row="1"
+                FontFamily="Arial"
+                FontSize="16" 
+                FontWeight="Bold"
+                Name="BtnOrderAd"
+                Click="BtnOrderAd_Click"/>
+        <Button Content="Удалить"
+                Width="200"
+                Height="30"
+                HorizontalAlignment="Right"
+                Margin="5"
+                Grid.Row="1"
+                FontFamily="Arial"
+                FontSize="16" 
+                FontWeight="Bold"
+                Name="BtnOrderDelete"
+                Click="BtnOrderDelete_Click"/>
+
+    </Grid>
+</Page>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e58a23aee88749f49f5f2892d39b9858" Name="Diagram1">
+        <EntityTypeShape EntityType="diplomModel.autopark" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.client" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.orders" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.transport" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.users" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.voditel" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.worker" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="diplomModel.FK_transport_autopark" ManuallyRouted="false" />
+        <AssociationConnector Association="diplomModel.FK_orders_client" ManuallyRouted="false" />
+        <AssociationConnector Association="diplomModel.FK_orders_worker" ManuallyRouted="false" />
+        <AssociationConnector Association="diplomModel.FK_transport_orders" ManuallyRouted="false" />
+        <AssociationConnector Association="diplomModel.FK_transport_voditel" ManuallyRouted="false" />
+        <AssociationConnector Association="diplomModel.FK_users_worker1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="diplomModel.role" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
